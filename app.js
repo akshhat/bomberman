@@ -43,6 +43,8 @@ document.querySelectorAll('.mines').forEach(mine => {
             })
             if (!isSafe) {
                 e.target.classList.add('safe');
+                const one = document.createTextNode('1');
+                mine.appendChild(one);
                 points++;
                 score.innerText = points;
             }

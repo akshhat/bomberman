@@ -16,7 +16,12 @@
 }
 
 .safe {
+    font-size: large;
+    font-weight: 500;
+    display: flex;
     background-color: aquamarine !important;
+    align-items: center;
+    justify-content: center;
 }
 
 .danger {
