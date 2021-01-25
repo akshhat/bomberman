@@ -19,16 +19,18 @@
     font-size: large;
     font-weight: 500;
     display: flex;
-    background-color: aquamarine !important;
+    background-color: forestgreen !important;
+    color: whitesmoke;
     align-items: center;
     justify-content: center;
 }
 
 .danger {
     background-image: url("https://img.icons8.com/emoji/48/000000/bomb-emoji.png");
+    background-color: red !important;
 }
 
-#score-card {
+#score-card, #resultDisplay {
     margin-top: 30px;
     text-align: center;
     font-weight: 600;

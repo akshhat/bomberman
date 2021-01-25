@@ -1,7 +1,7 @@
 const board = document.querySelector('.board');
-const score = document.querySelector('#score');
-const button = document.querySelector('#again');
-let bombsArray = [];
+const score = document.querySelector('#gameScore');
+const button = document.querySelector('#resetButton');
+let random = [];
 let mineBlast = false;
 const width = 9;
 let points = 0;
@@ -13,25 +13,26 @@ for (let i = 0; i < width * width; i++) {
     board.appendChild(mine);
 }
 
-while (bombsArray.length < 10) {
+while (random.length < 10) {
     let bombPos = Math.ceil(Math.random() * 81);
-    if (!bombsArray.includes(bombPos)) {
-        bombsArray.push(bombPos);
+    if (!random.includes(bombPos)) {
+        random.push(bombPos);
     }
 }
 
 function gameOver() {
     document.querySelectorAll('.mines').forEach(mine => {
-        if (bombsArray.includes(Number(mine.id.slice(5, 7)))) {
+        if (random.includes(Number(mine.id.slice(5, 7)))) {
             mine.classList.add('danger');
             mineBlast = true;
+            document.querySelector('#resultDisplay').innerText = "game over";
         }
     })
 }
 
 document.querySelectorAll('.mines').forEach(mine => {
     mine.addEventListener('click', (e) => {
-        if (bombsArray.includes(Number(e.target.id.slice(5, 7))) && !mineBlast) {
+        if (random.includes(Number(e.target.id.slice(5, 7))) && !mineBlast) {
             e.target.classList.add('danger');
             gameOver();
         } else if (!mineBlast) {
@@ -47,6 +48,10 @@ document.querySelectorAll('.mines').forEach(mine => {
                 mine.appendChild(one);
                 points++;
                 score.innerText = points;
+                if (points == 71) {
+                    document.querySelector('#resultDisplay').innerText = "win";
+                    mineBlast = true;
+                }
             }
         }
     })
